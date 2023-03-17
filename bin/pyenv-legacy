@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+
+STATUS=0
+
+if ! [ $(git show -s --format=%ct) ]; then
+	STATUS="$?"
+	exit "$STATUS"
+else
+	TS=$(git show -s --format=%ct)
+fi
+
+if [ -z $(command -v jq) ]; then
+	STATUS="$?"
+	info "Could not find jq in path!"
+	exit "$STATUS"
+else
+	PS3="Select a version to try: "
+	select version in $(curl https://endoflife.date/api/python.json | jq -r --argjson TIMESTAMP $TS '.[] | {version: .cycle, release: ((.releaseDate+"T00:00:00Z")| fromdate), eol: ((.eol+"T00:00:00Z")| fromdate)} | select(.release<$TIMESTAMP and $TIMESTAMP<=.eol) | .version')
+	do
+		case $opt in
+			' ' )
+				echo "Can't be empty. "
+				;;
+			${!i} )
+				echo $version > ./.python-version
+				pyenv install -s || STATUS="$?"
+				pyenv local || STATUS="$?"
+				break
+				;;
+		esac
+	done
+fi	
+
+exit "$STATUS"
+
