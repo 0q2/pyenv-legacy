@@ -12,6 +12,8 @@ that provides a `pyenv legacy` command to help diagnose python projects that lac
 Installing pyenv-legacy as a pyenv plugin will give you access to the
 `pyenv legacy` command.
 
+First make sure ['jq'](https://stedolan.github.io/jq/) is installed and in your path. Then:
+
     $ git clone https://github.com/0q2/pyenv-legacy.git $(pyenv root)/plugins/pyenv-legacy
 
 ## Usage
