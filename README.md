@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/0q2/pyenv-legacy.svg?branch=master)](https://travis-ci.com/0q2/pyenv-legacy)
 
 pyenv-legacy is a [pyenv](https://github.com/pyenv/pyenv) plugin
-that provides a `pyenv legacy` command to update pyenv and its plugins.
+that provides a `pyenv legacy` command to help diagnose python projects that lack specified versioning.
 
 ## Installation
 
@@ -16,7 +16,7 @@ Installing pyenv-legacy as a pyenv plugin will give you access to the
 
 ## Usage
 
-To update pyenv and plugins (including pyenv-legacy itself), just type `pyenv legacy`.
+To select from python versions that were supported at the time of the last commit of the current directory's git branch, just type `pyenv legacy`.
 
     $ pyenv legacy
 
