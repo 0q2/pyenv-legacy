@@ -16,7 +16,7 @@ if [ -z $(command -v jq) ]; then
 	exit "$STATUS"
 else
 	PS3="Select a version to try: "
-	select version in $(curl https://endoflife.date/api/python.json | jq -r --argjson TIMESTAMP $TS '.[] | {version: .cycle, release: ((.releaseDate+"T00:00:00Z")| fromdate), eol: ((.eol+"T00:00:00Z")| fromdate)} | select(.release<$TIMESTAMP and $TIMESTAMP<=.eol) | .version')
+	select version in $(curl -s https://endoflife.date/api/python.json | jq -r --argjson TIMESTAMP $TS '.[] | {version: .cycle, release: ((.releaseDate+"T00:00:00Z")| fromdate), eol: ((.eol+"T00:00:00Z")| fromdate)} | select(.release<$TIMESTAMP and $TIMESTAMP<=.eol) | .version')
 	do
 		case $opt in
 			' ' )
