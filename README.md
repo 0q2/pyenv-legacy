@@ -1,6 +1,6 @@
 # pyenv-legacy
 
-[![Build Status](https://travis-ci.com/0q2/pyenv-legacy.svg?branch=master)](https://travis-ci.com/0q2/pyenv-legacy)
+[![Build Status](https://app.travis-ci.com/0q2/pyenv-legacy.svg?branch=main)](https://app.travis-ci.com/github/0q2/pyenv-legacy)
 
 pyenv-legacy is a [pyenv](https://github.com/pyenv/pyenv) plugin
 that provides a `pyenv legacy` command to help diagnose python projects that lack specified versioning.
